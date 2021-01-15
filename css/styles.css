@@ -64,6 +64,9 @@ section {
 
 /* Navigation Styles*/
 .navbar__menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     padding-left: 0;
     margin: 0;
     text-align: right;
@@ -230,4 +233,10 @@ section.your-active-class .landing__container::after {
     bottom: 3em;
     right: 1em;
     z-index: 1;
+    color: #fc0505d7;
+    background-color: #fff;
+    border-radius: 50%;
+}
+#buttonup:hover{
+    color: coral;
 }

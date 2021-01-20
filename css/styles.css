@@ -82,12 +82,17 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    font-size: 0.8em;
 }
 
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+}
+.active .menu__link{
+    background-color: #333;
+    color: #fff;
 }
 
 /* Header Styles */
@@ -122,6 +127,9 @@ section {
     .landing__container {
         max-width: 50em;
         padding: 4em;
+    }
+    .navbar__menu .menu__link{
+        font-size: 1em;
     }
 }
 
@@ -233,8 +241,8 @@ section.your-active-class .landing__container::after {
     bottom: 3em;
     right: 1em;
     z-index: 1;
-    color: #fc0505d7;
-    background-color: #fff;
+    color: #fff;
+    background-color: #333;
     border-radius: 50%;
 }
 #buttonup:hover{

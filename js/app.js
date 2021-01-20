@@ -20,10 +20,9 @@
 const navlist= document.getElementById("navbar__list");
 const buttonup= document.getElementById("buttonup");
 const sections= document.querySelectorAll("section");
-const activeclass= document.querySelector("your-active-class");
+const menuElement = document.querySelector("#navbar__list");
 let port= $(window);
 let myscroll= 0;
-console.log(sections);
 
 /**
  * End Global Variables
@@ -33,13 +32,11 @@ console.log(sections);
 
 /*scrolltop*/
 function pageTop() {
-    /*console.log(port.scrollTop());
-    console.log("this is myscrool "+myscroll);*/
-   if (port.scrollTop()>40 && myscroll>port.scrollTop()){
+    if (port.scrollTop()>40 && myscroll>port.scrollTop()){
         buttonup.style.display= "inline-block";
-   }else buttonup.style.display= "none";
+    }else buttonup.style.display= "none";
 
-   myscroll= port.scrollTop();
+    myscroll= port.scrollTop();
 }
 
 /* iterating through the sections and creating a button, assigning id and class, adding it to the fragment and once done looping adding it to the unordered list
@@ -47,37 +44,33 @@ Tested forEach and "for...of" iterations, the latter yields faster load times.
 Also tested if it's faster with an external button builder function, it doesn't seem to be*/
 function menuBuild() {
     //setup
-     const menuElement = document.querySelector("#navbar__list");
-     const fragment = document.createDocumentFragment();
-     for (const section of sections) {
+    const fragment = document.createDocumentFragment();
+    for (const section of sections) {
         const buttonTemplate= document.createElement("li");
-        buttonTemplate.classList.add("menu__link");
-        buttonTemplate.id= `${section.id}`;
+        buttonTemplate.id= "navbu_"+section.id;
         buttonTemplate.textContent= section.dataset.nav;
+        buttonTemplate.innerHTML=`<a href="#${section.id}" class="menu__link">${buttonTemplate.textContent}</a>`
         fragment.appendChild(buttonTemplate);
-     }
+    }
      //appending to the list
     menuElement.appendChild(fragment);
- }
-//checking if the section is in the viewport or not, if yes adding the active state
-//I feel like there is a better way to do this
- function active(){
+}
+//checking if the section is in the viewport or not, if yes adding the active state both to the section and the corresponding navigation button
+function active(){
     for (const section of sections) {
-        var myElementHeight = section.offsetHeight;
-        console.log(myElementHeight);
         const bounds=section.getBoundingClientRect();
-        console.log(bounds.top+"   "+bounds.bottom);
-        if(bounds.top<=250 && bounds.top>0){
+        const item= document.querySelector(`#navbu_${section.id}`);
+        if(bounds.top<=270 && bounds.bottom>=270) {
             section.classList.add("your-active-class");
-        }else if(bounds.bottom<250 && bounds.bottom>0){
+            console.log(item);
+            item.classList.add("active");
+        }else{
             section.classList.remove("your-active-class");
-        }else if(bounds.top>250){
-            section.classList.remove("your-active-class");
-        }else if(bounds.bottom>250){
-            section.classList.add("your-active-class");
+            item.classList.remove("active");
         }
     }
- }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions

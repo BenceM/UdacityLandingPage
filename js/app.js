@@ -18,7 +18,6 @@
  *
 */
 
-const navlist= document.getElementById("navbar__list");
 const buttonup= document.getElementById("buttonup");
 const sections= document.querySelectorAll("section");
 const menuElement = document.querySelector("#navbar__list");

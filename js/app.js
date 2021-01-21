@@ -17,6 +17,7 @@
  * Define Global Variables
  *
 */
+
 const navlist= document.getElementById("navbar__list");
 const buttonup= document.getElementById("buttonup");
 const sections= document.querySelectorAll("section");
@@ -30,7 +31,8 @@ let myscroll= 0;
  *
 */
 
-/*scrolltop*/
+/*scrolltop: made it so it only appears if the user is scrolling up, so it doesn't block the view all the time*/
+
 function pageTop() {
     if (port.scrollTop()>40 && myscroll>port.scrollTop()){
         buttonup.style.display= "inline-block";
@@ -40,10 +42,10 @@ function pageTop() {
 }
 
 /* iterating through the sections and creating a button, assigning id and class, adding it to the fragment and once done looping adding it to the unordered list
-Tested forEach and "for...of" iterations, the latter yields faster load times.
-Also tested if it's faster with an external button builder function, it doesn't seem to be*/
+Tested forEach and "for...of" iterations, the latter seem to yields faster load times.
+Also tested if it's faster with an external button builder function, it doesn't look like it is*/
+
 function menuBuild() {
-    //setup
     const fragment = document.createDocumentFragment();
     for (const section of sections) {
         const buttonTemplate= document.createElement("li");
@@ -55,14 +57,15 @@ function menuBuild() {
      //appending to the list
     menuElement.appendChild(fragment);
 }
+
 //checking if the section is in the viewport or not, if yes adding the active state both to the section and the corresponding navigation button
+
 function active(){
     for (const section of sections) {
         const bounds=section.getBoundingClientRect();
         const item= document.querySelector(`#navbu_${section.id}`);
         if(bounds.top<=270 && bounds.bottom>=270) {
             section.classList.add("your-active-class");
-            console.log(item);
             item.classList.add("active");
         }else{
             section.classList.remove("your-active-class");
@@ -76,29 +79,13 @@ function active(){
  * Begin Main Functions
  *
 */
+
 menuBuild();
 port.scroll(pageTop);
 port.scroll(active);
 buttonup.onclick=()=>{port.scrollTop(0)};
-// build the nav
 
 
-// Add class 'active' to section when near top of viewport
 
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
 
 

@@ -1,16 +1,11 @@
-# Landing Page Project
+# Javascript On Landing page
 
-## Table of Contents
+## What happens
 
-* [Instructions](#instructions)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+- Navigation is built dynamically, based on the sections present in the html.
+- Page top button, appears when scrolling up and takes you to the top of the page.
+- Active state for sections and navigation and specific css for them.
+- Standard scroll for menu links is prevented and smooth scroll is added.
 
 ## My Experience
 

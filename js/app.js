@@ -32,7 +32,7 @@ let myscroll= 0;
 
 /*scrolltop: made it so it only appears if the user is scrolling up, so it doesn't block the view all the time*/
 
-function pageTop() {
+const pageTop=()=> {
     if (port.scrollTop()>40 && myscroll>port.scrollTop()){
         buttonup.style.display= "inline-block";
     }else buttonup.style.display= "none";
@@ -44,7 +44,7 @@ function pageTop() {
 Tested forEach and "for...of" iterations, the latter seem to yields faster load times.
 Also tested if it's faster with an external button builder function, it doesn't look like it is*/
 
-function menuBuild() {
+const menuBuild =()=> {
     const fragment = document.createDocumentFragment();
     for (const section of sections) {
         const buttonTemplate= document.createElement("li");
@@ -59,7 +59,7 @@ function menuBuild() {
 
 //checking if the section is in the viewport or not, if yes adding the active state both to the section and the corresponding navigation button
 
-function active(){
+const active=()=>{
     for (const section of sections) {
         const bounds=section.getBoundingClientRect();
         const item= document.querySelector(`#navbu_${section.id}`);
@@ -73,6 +73,18 @@ function active(){
     }
 }
 
+//smooth scroll
+$(document).ready(()=>{
+    const menuLink= document.querySelectorAll(".menu__link");
+    menuLink.forEach(link=>{
+        link.addEventListener("click",action=>{
+            action.preventDefault();
+            let target=document.querySelector(link.hash);
+            target.scrollIntoView({behavior: 'smooth'});
+        })
+    })
+})
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -83,8 +95,3 @@ menuBuild();
 port.scroll(pageTop);
 port.scroll(active);
 buttonup.onclick=()=>{port.scrollTop(0)};
-
-
-
-
-

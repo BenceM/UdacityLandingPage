@@ -1,11 +1,28 @@
 # Javascript On Landing page
 
-## What happens
+This is a forked landing page project, extended with some styling and javascript. JS is mainly focused on DOM manipulation.
+
+## What Was Used
+
+- HTML
+- CSS
+- JavaScript
+- JQuery
+- FontAwesome
+
+## What Happens
 
 - Navigation is built dynamically, based on the sections present in the html.
 - Page top button, appears when scrolling up and takes you to the top of the page.
 - Active state for sections and navigation and specific css for them.
 - Standard scroll for menu links is prevented and smooth scroll is added.
+
+## Resources
+
+- [Mozilla Dev](developer.mozilla.org)
+- [Stackoverflow](stackoverflow.com)
+- [W3Schools](w3schools.com)
+- [Awik](awik.io)
 
 ## My Experience
 
